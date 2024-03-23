@@ -15,7 +15,7 @@ django==4.2.10
     #   django-extensions
     #   django-health-check
     #   djangorestframework
-    #   django-admin-interface
+django-admin-interface==0.28.5
 django-admin-list-filter-dropdown==1.0.3
     # via -r requirements-dev.in
 django-adminfilters==2.1.0
@@ -28,8 +28,9 @@ djangorestframework==3.14.0
     # via -r requirements-dev.in
 environs==9.5.0
     # via -r requirements-dev.in
-marshmallow==3.14.1
+marshmallow==3.21.1
     # via environs
+whitenoise==6.6.0     
 python-dotenv==0.19.2
     # via environs
 pytz==2022.1
