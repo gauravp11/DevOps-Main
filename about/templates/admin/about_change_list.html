@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: conic-gradient(
+            #ffffff 0%,     /* White */
+            #cccccc 25%,    /* Light Gray */
+            #999999 50%,    /* Medium Gray */
+            #666666 75%,    /* Dark Gray */
+            #000000 100%    /* Black */
+        );
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            text-align: center;
+            animation: fadeInUp 1s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .names ul li {
+            margin: 2px;
+            padding: 10px 20px;    /* Adjust padding for rectangle shape */
+            background: linear-gradient(rgba(0,0,0,0.3), #333);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 28px;
+            font-weight: bold;
+            opacity: 0;
+            border-radius: 15px;
+            animation: fadeInLeft 1s ease forwards;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            
+        }
+
+        /* Define keyframe animations for each direction */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateY(-5000px) rotate(-360deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotate(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateY(5000px) rotate(360deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotate(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(-5000px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(5000px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply different animations to each team member */
+        .names ul li:nth-child(1) {
+            animation: slideInLeft 1s ease forwards;
+        }
+
+
+        .names ul li:nth-child(2) {
+            animation: slideInRight 1s ease forwards;
+        }
+
+        .names ul li:nth-child(3) {
+            animation: slideInUp 3s ease forwards;
+        }
+
+        .names ul li:nth-child(4) {
+            animation: slideInDown 2s ease forwards;
+        }
+
+        .names ul li:nth-child(5) {
+            animation: slideInLeft 2s ease forwards;
+        }
+
+
+        .roll-number {
+            display: none; /* Initially hide roll numbers */
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .member:hover .roll-number {
+            display: block; /* Show roll numbers when hovering over member */
+        }
+
+        /* Additional styles for the contact section */
+        .contact-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 1;
+            
+        }
+
+        .contact {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            display: none;
+            opacity: 0;
+
+            
+        }
+
+        .contact.show {
+            max-height: 200px;
+            
+        }
+
+        .contact h2 {
+            color: #333;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        .emails {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            
+        }
+
+        .emails li {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #333;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        /* Style for email links */
+        .emails a {
+            color: #0e0d0d; /* Blue color for links */
+            text-decoration: none; /* Remove underline */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            transition: color 0.3s ease; /* Smooth color transition */
+            position: relative; /* Positioning for pseudo-elements */
+        }
+
+        /* Style for email links on hover */
+        .emails a:hover {
+            color: #e12c08; /* Darker blue color on hover */
+        }
+
+        /* Underline animation */
+        .emails a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #007bff; /* Blue color for underline */
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            transition: width 0.3s ease; /* Smooth width transition */
+        }
+
+        .emails a:hover::after {
+            width: 100%; /* Full width on hover */
+        }
+
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        .broke-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 1;
+            
+        }
+
+        .broke-button:hover {
+            background-color: #45a049;
+        }
+
+        .broke-button:active {
+            background-color: #45a049;
+            transform: translateY(4px);
+        }
+
+        .broken {
+            background-color: #f44336; /* Red */
+        }
+
+        .broken:hover {
+            background-color: #c62828;
+        }
+
+        .broken:active {
+            background-color: #c62828;
+            transform: translateY(4px);
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="names">
+            <h2>Team</h2>
+            <ul>
+                <li class="member" data-roll="101">Yogendra Shamra<span class="roll-number">Roll Number: 1000001</span></li>
+                <li class="member" data-roll="102">Ishank Bisnoi<span class="roll-number">Roll Number: 100000002</span></li>
+                <li class="member" data-roll="103">Gaurav Pande<span class="roll-number">Roll Number: 100000003</span></li>
+                <li class="member" data-roll="104">Trupti Koli<span class="roll-number">Roll Number: 100000004</span></li>
+                <li class="member" data-roll="105">Rahaf Parveen<span class="roll-number">Roll Number: 1000000005</span></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Contact Button -->
+    <button class="contact-button" onclick="toggleContact()">Contact</button>
+
+    <!-- Contact Section -->
+    <div class="contact" id="contact">
+
+        <ul class="emails">
+            <li><a href="mailto:email1@example.com">email1@example.com</a></li>
+            <li><a href="mailto:email2@example.com">email2@example.com</a></li>
+            <li><a href="mailto:email3@example.com">email3@example.com</a></li>
+            <li><a href="mailto:email4@example.com">email4@example.com</a></li>
+            <li><a href="mailto:email5@example.com">email5@example.com</a></li>
+        </ul>
+
+
+        <script>
+
+
+           // Function to toggle contact section visibility
+            function toggleContact() {
+                const contact = document.getElementById('contact');
+                if (contact.style.display === 'block') {
+                    // If contact section is currently visible, hide it
+                    contact.style.display = 'none';
+                    contact.style.opacity = '0';
+                } else {
+                    // If contact section is currently hidden, show it
+                    contact.style.display = 'block';
+                    // Delay setting opacity to allow transition effect
+                    setTimeout(() => {
+                        contact.style.opacity = '1';
+                    }, 10);
+                }
+            }
+
+            // Function to close contact section when clicking outside of it
+            function closeContactSection(event) {
+                const contact = document.getElementById('contact');
+                const contactButton = document.querySelector('.contact-button');
+                // Check if the clicked element is not within the contact section or the contact button
+                if (!contact.contains(event.target) && !contactButton.contains(event.target)) {
+                    // Close the contact section
+                    contact.style.display = 'none';
+                    contact.style.opacity = '0';
+                }
+            }
+
+            // Event listener for clicks on the document body
+            document.body.addEventListener('click', closeContactSection);
+
+
+
+
+        </script>
+    </div>
+
+    
+
+    <button id="backButton" onclick="goBack()" class="broke-button">Back</button>
+    <script>
+        function goBack() {
+        var button = document.getElementById("backButton");
+        button.classList.add("broken");
+        setTimeout(function() {
+            button.classList.remove("broken");
+            window.history.back();
+        }, 250);
+        }
+    </script>
+</body>
+</html>
