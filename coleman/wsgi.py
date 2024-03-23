@@ -12,9 +12,9 @@ import os
 from django.contrib.staticfiles.handlers import StaticFilesHandler
 from django.core.wsgi import get_wsgi_application
 
-from main import settings
+from coleman import settings
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "main.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "coleman.settings")
 
 if settings.STATIC_ENABLE_WSGI_HANDLER:
     application = StaticFilesHandler(get_wsgi_application())
