@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main', // Replace with your branch name (if not main)
+                    url: 'https://github.com/gauravp11/DevOps-Main.git'
+            }
+        } // <- Add this closing brace
+
+        stage('Setup') {
+            steps {
+                // Install Python packages from requirements.txt
+                bat 'pip install -r requirements.txt'
+            }
+        }
+        
+        stage('Django Migrations') {
+            steps {
+                // Run Django makemigrations command for the 'about' app
+                bat 'manage.py makemigrations about'
+                
+                // Apply migrations for the 'about' app
+                bat 'manage.py migrate about'
+            }
+        }
+
+        stage('Create super User'){
+            steps{
+                bat 'manage.py createsuperuser --username=admin --email=admin@example.com --noinput --password admin1234'
+            }
+        }
+       
+        stage('Run Development Server') {
+            steps {
+                // Run Django server
+                bat 'manage.py runserver'
+            }
+        }
+    }
+}
