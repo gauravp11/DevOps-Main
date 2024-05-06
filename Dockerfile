@@ -1,19 +1,13 @@
 # Use the official Python image as base
-FROM python:3.8-slim
+FROM python:3.11-slim
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Set the working directory in the container
-WORKDIR /code
-
-# Copy the requirements file and install dependencies
-COPY requirements.txt /code/
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the project code into the container
-COPY . /code/
+# Copy the source to destination
+COPY . .
+RUN pip install -r requirements.txt
 
 # Run migrations
 RUN python3 manage.py makemigrations about && \
@@ -22,8 +16,8 @@ RUN python3 manage.py makemigrations about && \
     python3 manage.py migrate
 
 # Create superuser
-RUN python3 manage.py createsuperuser --username admin --email admin@admin.com --noinput && \
-    echo "from django.contrib.auth.models import User; user = User.objects.get(username='admin'); user.set_password('adminpassword'); user.save()" | python3 manage.py shell
+RUN python3 manage.py createsuperuser --username admindocker --email admin@admin.com --noinput && \
+    echo "from django.contrib.auth.models import User; user = User.objects.get(username='admindocker'); user.set_password('adminpassword'); user.save()" | python3 manage.py shell
 
 # Expose the port that Django runs on
 EXPOSE 8000
