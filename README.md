@@ -1,6 +1,6 @@
 # TaskSync
 
-TaskSync is a comprehensive task management application designed to streamline your workflow and enhance productivity. With TaskSync, users can easily create tasks, take notes, manage themes, define user roles, and efficiently search and filter data. Whether you're a solo entrepreneur, a small team, or a large corporation, TaskSync offers the flexibility and functionality to meet your task management needs.
+TaskSync is a comprehensive task management application designed to streamline your workflow and enhance productivity. With TaskSync, users can easily create tasks, take notes, manage themes, define user roles, and efficiently search and filter data. Whether you're a solo entrepreneur, a small team, or a large corporation, TaskSync offers the flexibility and functionality to meet your task management needs. WebHOOK
 
 ## Features
 
