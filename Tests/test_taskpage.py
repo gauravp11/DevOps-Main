@@ -8,7 +8,7 @@ from locators import LoginPageLocators, TaskPageLocators, CommonLocators, HomePa
 def driver():
     # Initialize WebDriver
     global driver
-    driver = webdriver.Chrome()
+    driver = webdriver.Edge()
     yield driver
     # Teardown
     driver.quit()
