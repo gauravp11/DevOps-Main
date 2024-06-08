@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-application
+  namespace: my-namespace
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: my-target-namespace
+  project: default
+  source:
+    repoURL: https://github.com/gauravp11/DevOps-Main.git
+    targetRevision: HEAD
+    path: path
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
